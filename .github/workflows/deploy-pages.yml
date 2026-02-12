@@ -30,6 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install image tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg webp
+
       - name: Resolve path prefix
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
