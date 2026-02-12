@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or site.title }}</title>
+    <meta name="description" content="{{ description or site.description }}" />
+    <link rel="stylesheet" href="{{ '/assets/styles.css' | url }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-title" href="{{ '/' | url }}">{{ site.title }}</a>
+        <nav class="site-nav">
+          <a href="{{ '/' | url }}">Home</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      {{ content | safe }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Built with Eleventy.</p>
+      </div>
+    </footer>
+
+    <div class="video-modal" data-video-modal data-open="false" aria-hidden="true">
+      <div class="video-modal__content" role="dialog" aria-modal="true">
+        <button class="video-modal__close" type="button" data-video-close aria-label="Close video">&times;</button>
+        <p class="video-modal__title" data-video-title></p>
+        <div class="video-modal__frame">
+          <iframe
+            src=""
+            title=""
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ '/assets/app.js' | url }}" defer></script>
+  </body>
+</html>

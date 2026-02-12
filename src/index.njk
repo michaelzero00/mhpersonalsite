@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+title: Portfolio
+---
+
+<section class="hero">
+  <p class="eyebrow">Portfolio</p>
+  <h1>Selected video work.</h1>
+  <p class="lede">Hover a thumbnail to reveal the title. Click to play.</p>
+</section>
+
+<section class="video-grid">
+  {% for video in videos %}
+  <button
+    class="video-card"
+    type="button"
+    data-vimeo-id="{{ video.vimeoId }}"
+    data-title="{{ video.title }}"
+    aria-label="Play {{ video.title }}"
+  >
+    {% if video.imageWebp %}
+    <picture>
+      <source srcset="{{ video.imageWebp | url }}" type="image/webp" />
+      <img
+        src="{{ video.image | url }}"
+        alt="Thumbnail for {{ video.title }}"
+        loading="lazy"
+      />
+    </picture>
+    {% else %}
+    <img
+      src="{{ video.image | url }}"
+      alt="Thumbnail for {{ video.title }}"
+      loading="lazy"
+    />
+    {% endif %}
+    <div class="video-overlay">
+      <p>{{ video.title }}</p>
+    </div>
+  </button>
+  {% endfor %}
+</section>
